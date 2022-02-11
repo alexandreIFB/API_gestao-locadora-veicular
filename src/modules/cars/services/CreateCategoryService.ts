@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { CategoriesRepository } from "../repositories/CategoriesRepository";
 
 interface IRequest {
