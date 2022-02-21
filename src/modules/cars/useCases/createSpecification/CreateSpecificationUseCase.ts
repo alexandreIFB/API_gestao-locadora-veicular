@@ -1,12 +1,12 @@
 /* eslint-disable prettier/prettier */
-import { ISpecificationsRepository } from "../repositories/ISpecificationsRepository";
+import { ISpecificationsRepository } from "../../repositories/ISpecificationsRepository";
 
 interface IRequest {
   name: string;
   description: string;
 }
 
-class CreateSpecificationService {
+class CreateSpecificationUseCase {
   constructor(private specificationsRepository: ISpecificationsRepository) { }
 
   execute({ name, description }: IRequest) {
@@ -16,9 +16,8 @@ class CreateSpecificationService {
       throw new Error("Specification already exists");
     }
 
-
     this.specificationsRepository.create({ name, description });
   }
 }
 
-export { CreateSpecificationService };
+export { CreateSpecificationUseCase };
