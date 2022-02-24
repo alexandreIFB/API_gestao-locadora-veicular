@@ -6,8 +6,9 @@ class ListAllCaregoryController {
   // eslint-disable-next-line prettier/prettier
   constructor(private listAllCategoryUseCase: ListAllCaregoryUseCase) { }
 
-  hanlde(request: Request, response: Response): Response {
-    return response.json(this.listAllCategoryUseCase.execute());
+  async hanlde(request: Request, response: Response): Promise<Response> {
+    const categories = await this.listAllCategoryUseCase.execute();
+    return response.json(categories);
   }
 }
 

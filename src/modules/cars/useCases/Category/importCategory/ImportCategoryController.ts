@@ -6,10 +6,14 @@ class ImportCategoryController {
   // eslint-disable-next-line prettier/prettier
   constructor(private importCategoryUseCase: ImportCategoryUsecase) { }
 
-  handle(request: Request, response: Response) {
+  async handle(request: Request, response: Response): Promise<Response> {
     const { file } = request;
-    this.importCategoryUseCase.execute(file);
-    return response.send();
+    try {
+      await this.importCategoryUseCase.execute(file);
+      return response.send();
+    } catch (error) {
+      return response.status(400).json({ error: error.message });
+    }
   }
 }
 
