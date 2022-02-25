@@ -1,5 +1,5 @@
 import { Category } from "../../../entities/Category";
-import { ICategoriesRepository } from "../../../repositories/implementations/ICategoriesRepository";
+import { ICategoriesRepository } from "../../../repositories/interfaces/ICategoriesRepository";
 
 class ListAllCaregoryUseCase {
   // eslint-disable-next-line prettier/prettier
