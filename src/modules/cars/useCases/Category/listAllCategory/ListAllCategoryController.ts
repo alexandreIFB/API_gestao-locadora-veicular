@@ -1,15 +1,16 @@
 import { Request, Response } from "express";
+import { container } from "tsyringe";
+import { ListAllCategoryUseCase } from "./ListAllCategoryUseCase";
 
-import { ListAllCaregoryUseCase } from "./ListAllCategoryUseCase";
 
-class ListAllCaregoryController {
-  // eslint-disable-next-line prettier/prettier
-  constructor(private listAllCategoryUseCase: ListAllCaregoryUseCase) { }
+class ListAllCategoryController {
 
   async hanlde(request: Request, response: Response): Promise<Response> {
-    const categories = await this.listAllCategoryUseCase.execute();
+    const listAllCategoryUseCase = container.resolve(ListAllCategoryUseCase)
+
+    const categories = await listAllCategoryUseCase.execute();
     return response.json(categories);
   }
 }
 
-export { ListAllCaregoryController };
+export { ListAllCategoryController };
