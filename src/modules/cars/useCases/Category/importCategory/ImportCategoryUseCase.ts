@@ -47,11 +47,10 @@ class ImportCategoryUsecase {
 
       const existCategory = await this.categoriesRepository.findByName(name);
 
-      if (existCategory) {
-        throw new Error("Category already exists");
+      if (!existCategory) {
+        await this.categoriesRepository.create({ name, description });
       }
 
-      await this.categoriesRepository.create({ name, description });
     });
   }
 }
